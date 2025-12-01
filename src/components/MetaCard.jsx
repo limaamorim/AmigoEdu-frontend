@@ -2,7 +2,7 @@ import { LiaUserFriendsSolid } from "react-icons/lia";
 
 export default function MetaCard({ titulo, descricao, recompensa}) {
     return(
-        <div className="flex flex-col bg-neutral-50 max-w-90 rounded-3xl shadow p-7 gap-2 items-center hover:shadow-lg transition">
+        <div className="flex flex-col bg-white max-w-90 rounded-3xl shadow p-7 gap-2 items-center hover:shadow-lg transition">
             <LiaUserFriendsSolid className="text-8xl text-amber-400" />
             <div className="flex flex-col gap-3 items-center">
                 <h1 className="font-semibold text-xl">{titulo}</h1>

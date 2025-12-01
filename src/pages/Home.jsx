@@ -65,9 +65,12 @@ export default function Home() {
 
     return(
         <div className="flex flex-col gap-10 m-5 mb-30 md:mb-0 md:ml-0 justify-center">
-            <div className="text-4xl lg:text-4xl font-semibold">
-                <h1>Olá, {nome}! 👋</h1>
-            </div>
+        <div className="border-b border-gray-200 pb-6">
+        <h1 className="text-4xl font-bold text-gray-900 tracking-tight">
+          Olá, {nome}! 👋
+        </h1>
+        <p className="text-gray-600 mt-2">Aqui está o resumo da sua plataforma</p>
+      </div>
             <Link />
             <Overview />
             <GameficacaoCard

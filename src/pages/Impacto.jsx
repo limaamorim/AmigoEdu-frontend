@@ -60,9 +60,11 @@ export default function Impacto() {
 
     return (
         <div className="flex flex-col gap-5 m-5 md:m-0 md:mr-5 justify-center">
-            <div className="flex flex-col gap-2">
-                <h1 className="text-4xl font-semibold">Meu Impacto</h1>
-                <p className="text-gray-700">Veja o impacto real que suas indicações estão gerando!</p>
+            <div className="border-b border-gray-200 pb-6">
+          <h1 className="text-4xl font-bold text-gray-900 tracking-tight">
+            Meu Impacto
+            </h1>
+          <p className="text-gray-600 mt-2">Veja o impacto real que suas indicações estão gerando!</p>
             </div>
 
             <div className="flex flex-col gap-5 justify-center w-full">

@@ -6,48 +6,64 @@ export default function GraficoIndicacao() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    async function carregarIndicacoes() {
+    async function carregar() {
       try {
-        const response = await api.get("/indicacoes");
-        const indicacoes = response.data;
+        const res = await api.get("/indicacoes");
+        const indicacoes = res.data;
 
-        const mesesAgrupados = {};
+        const meses = {};
         indicacoes.forEach(i => {
           if (i.data_indicacao) {
-            const mes = new Date(i.data_indicacao).getMonth(); // 0–11
-            mesesAgrupados[mes] = (mesesAgrupados[mes] || 0) + 1;
+            const mes = new Date(i.data_indicacao).getMonth();
+            meses[mes] = (meses[mes] || 0) + 1;
           }
         });
 
-        const nomesMeses = ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"];
-        const valores = Object.keys(mesesAgrupados).map(m => ({
-          mes: nomesMeses[m],
-          total: mesesAgrupados[m],
-        }));
+        const nomeMes = ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"];
+        setData(Object.keys(meses).map(m => ({ mes: nomeMes[m], total: meses[m] })));
 
-        setData(valores);
       } catch (err) {
-        console.error("Erro ao carregar indicações:", err);
+        console.error(err);
       }
     }
-
-    carregarIndicacoes();
+    carregar();
   }, []);
 
   return (
-    <div className="bg-white rounded-2xl p-5 shadow-md h-64 w-full lg:w-1/2">
-      <h3 className="mb-3 text-lg font-semibold">Indicações no mês</h3>
-      <div className="h-[85%]">
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart layout="vertical" data={data}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#eaeaea" />
-            <YAxis dataKey="mes" type="category" tick={{ fontSize: 12 }} width={50} />
-            <XAxis type="number" />
-            <Tooltip />
-            <Bar dataKey="total" barSize={18} fill="#285BB1" background={{ fill: "#dbe7ff" }} />
-          </BarChart>
-        </ResponsiveContainer>
+    <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm h-80 w-full hover:shadow-lg transition-all duration-300">
+
+      <div className="flex justify-between items-center mb-6">
+        <h3 className="text-xl font-bold text-gray-800">Indicações por Mês</h3>
+        
       </div>
+
+      <ResponsiveContainer width="100%" height="85%">
+        <BarChart data={data}>
+          <CartesianGrid stroke="#f3f4f6" strokeDasharray="3 3" />
+          <XAxis 
+            dataKey="mes" 
+            stroke="#6b7280"
+            fontSize={12}
+          />
+          <YAxis 
+            stroke="#6b7280"
+            fontSize={12}
+          />
+          <Tooltip 
+            contentStyle={{ 
+              borderRadius: '8px',
+              border: '1px solid #e5e7eb',
+              boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'
+            }}
+          />
+          <Bar 
+            dataKey="total" 
+            fill="#6366f1"
+            radius={[4, 4, 0, 0]}
+          />
+        </BarChart>
+      </ResponsiveContainer>
+
     </div>
   );
 }

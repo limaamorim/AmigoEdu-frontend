@@ -38,10 +38,15 @@ export default function MetasAdmin() {
     <div className="p-0 w-full pb-0 md:pb-10">
 
       {/* Título da página */}
-      <h3 className="text-[35px] font-semibold mb-4">Criar Metas</h3>
+      <div className="border-b border-gray-200 pb-6">
+        <h1 className="text-4xl font-bold text-gray-900 tracking-tight">
+          Criar metas
+        </h1>
+        <p className="text-gray-600 mt-2">Crie metas estratégicas para alcançar seus objetivos</p>
+      </div>
 
       {/* Card criar meta ou formulário */}
-      <div className="flex w-full justify-center">
+      <div className="flex w-full justify-center py-4">
         {!mostrandoForm ? (
           <MetaCardCriar onAbrirFormulario={abrirFormularioCriar} />
         ) : (

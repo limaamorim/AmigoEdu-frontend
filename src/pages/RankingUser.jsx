@@ -1,29 +1,46 @@
-import { useState } from "react";
-import Ranking from "../components/Ranking";
+import { useState, useEffect } from "react";
+import Ranking from "../components/admin/Ranking"; // ou ajuste o caminho correto
+import api from "../services/api";
 
-export default function RankingAdmin() {
+export default function RankingUser() {
   const [activeTab, setActiveTab] = useState("Diário");
-
+  const [rankingData, setRankingData] = useState([]);
   const tabs = ["Diário", "Semanal", "Mensal", "Todos"];
 
-  return (
-    <div className="flex flex-col m-5 mb-30 md:m-0 md:mr-5 md:mb-0">
+  useEffect(() => {
+    const carregarRanking = async () => {
+      try {
+        const endpoint = `/ranking/${activeTab
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")}`;
+        
+        const res = await api.get(endpoint);
+        setRankingData(res.data?.data ?? res.data ?? []);
+      } catch (err) {
+        console.error("Erro ao carregar ranking:", err);
+        setRankingData([]);
+      }
+    };
 
-      {/* TÍTULO */}
-      <div className="flex flex-col gap-1">
-        <h1 className="text-4xl font-semibold">Ranking geral</h1>
-        <p className="mb-6 text-gray-700">
-          Parabéns! Você está entre os melhores usuários cadastrados!
-        </p>
+    carregarRanking();
+  }, [activeTab]);
+
+  return (
+    <div className="flex flex-col m-5">
+      <div className="border-b border-gray-200 pb-6">
+        <h1 className="text-4xl font-bold text-gray-900 tracking-tight">
+          Ranking
+        </h1>
+        <p className="text-gray-600 mt-2">Visualize sua posição no ranking</p>
       </div>
 
-      {/* TABS */}
       <Ranking
         tabs={tabs}
         activeTab={activeTab}
         onChangeTab={setActiveTab}
+        data={rankingData}
       />
-
     </div>
   );
 }

@@ -79,7 +79,7 @@ export default function Overview() {
 
   return (
     <div className="flex gap-4 md:gap-10 w-full justify-center items-center flex-wrap">
-      <div className="flex w-full md:w-auto gap-8 justify-center items-center bg-neutral-50 py-7 px-9 rounded-3xl shadow-sm hover:shadow-lg transition">
+      <div className="flex w-full md:w-auto gap-8 justify-center items-center bg-white py-7 px-9 rounded-3xl shadow-sm hover:shadow-lg transition">
         <div className="flex flex-col items-center">
           <span className="font-medium text-3xl">
             {loading ? "—" : `R$ ${overviewData.saldoAcumulado}`}
@@ -89,14 +89,14 @@ export default function Overview() {
         <SaqueButton />
       </div>
 
-      <div className="flex flex-col w-full md:w-auto justify-center bg-neutral-50 py-7 px-9 rounded-2xl items-center shadow hover:shadow-lg transition">
+      <div className="flex flex-col w-full md:w-auto justify-center bg-white py-7 px-9 rounded-2xl items-center shadow hover:shadow-lg transition">
         <span className="font-medium text-3xl">
           {loading ? "—" : overviewData.indicacoesValidas}
         </span>
         <h1 className="text-sky-800 text-base font-semibold">Indicações válidas</h1>
       </div>
 
-      <div className="flex flex-col w-full md:w-auto justify-center bg-neutral-50 py-7 px-9 rounded-2xl items-center shadow hover:shadow-lg transition">
+      <div className="flex flex-col w-full md:w-auto justify-center bg-white py-7 px-9 rounded-2xl items-center shadow hover:shadow-lg transition">
         <span className="font-medium text-3xl">{loading ? "—" : overviewData.metasBatidas}</span>
         <h1 className="text-sky-800 text-base font-semibold">Metas batidas</h1>
       </div>

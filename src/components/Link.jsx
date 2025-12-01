@@ -21,7 +21,7 @@ export default function Link() {
 
     return(
         <div className="flex flex-col gap-2 w-full md:flex-row">
-            <div className="flex flex-row gap-2 bg-neutral-50 rounded-3xl items-center w-full p-3 shadow-sm">
+            <div className="flex flex-row gap-2 bg-white rounded-3xl items-center w-full p-3 shadow-sm">
                 <span className="text-sky-800 font-semibold pl-1 flex text-center">Meu link de indicação:</span>
                 <span className="text-gray-500 truncate">{link_indicacao}</span>
             </div>

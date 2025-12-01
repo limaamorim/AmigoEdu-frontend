@@ -54,8 +54,11 @@ export default function UsuariosGerenciarPage() {
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="flex justify-start items-center text-4xl font-semibold">
-        Gerenciar Usuários
+      <div className="border-b border-gray-200 pb-6">
+        <h1 className="text-4xl font-bold text-gray-900 tracking-tight">
+          Gerenciar Usuários
+        </h1>
+        <p className="text-gray-600 mt-2">Visualize e controle todas as informações dos usuários</p>
       </div>
 
       <div className="flex justify-center mt-2">
