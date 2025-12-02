@@ -34,7 +34,7 @@ export default function Ranking({ tabs = [], activeTab, onChangeTab, data = [] }
       ) : (
         <div className="flex flex-col gap-3">
           {data.map((usuario, index) => {
-            const pontos = usuario.pontos ?? usuario.gamificacao?.pontos ?? 0;
+            const pontos = usuario.indicacoes_validadas ?? 0;
 
             return (
               <div
